@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h2>{{ titulo }}</h2>
+
+  <button class="btn btn-primary mb-3" (click)="nuevo()">Nuevo Artículo</button>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of articulos">
+        <td>{{ a.idArticulo }}</td>
+        <td>{{ a.codigo }}</td>
+        <td>{{ a.descripcion }}</td>
+        <td>{{ a.precio | currency }}</td>
+        <td>{{ a.stock }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editar(a.idArticulo)">
+            Editar
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(a.idArticulo)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="error" class="text-danger">{{ error }}</p>
+</div>

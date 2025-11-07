@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>{{ titulo }}</h2>
+
+  <form (ngSubmit)="guardar()">
+    <div class="mb-3">
+      <label for="codigo" class="form-label">Código</label>
+      <input type="text" id="codigo" class="form-control" [(ngModel)]="articulo.Codigo" name="codigo" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <input type="text" id="descripcion" class="form-control" [(ngModel)]="articulo.Descripcion" name="descripcion" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input type="number" id="precio" class="form-control" [(ngModel)]="articulo.Precio" name="precio" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="stock" class="form-label">Stock</label>
+      <input type="number" id="stock" class="form-control" [(ngModel)]="articulo.Stock" name="stock" required />
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

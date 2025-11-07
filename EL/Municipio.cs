@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EL
+{
+    public class Municipio
+    {
+        public int IdMunicipio { get; set; }
+        public string Nombre { get; set; }
+
+        public EL.Estado Estado { get; set; }
+
+        public List<object> Municipios { get; set; }
+    }
+}

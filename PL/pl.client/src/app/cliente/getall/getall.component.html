@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="fw-bold m-0">{{ titulo }}</h3>
+    <a class="btn btn-primary btn-sm" routerLink="/cliente/form">Nuevo</a>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellido paterno</th>
+          <th>Apellido materno</th>
+          <th>Calle</th>
+          <th>No. Ext</th>
+          <th>No. Int</th>
+          <th>Colonia</th>
+          <th>CP</th>
+          <th>Municipio</th>
+          <th>Estado</th>
+          <th style="width:140px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clientes">
+          <td>{{ c.IdCliente }}</td>
+          <td>{{ c.Nombre }}</td>
+          <td>{{ c.ApellidoPaterno }}</td>
+          <td>{{ c.ApellidoMaterno }}</td>
+
+          <ng-container *ngIf="c.Direccion && c.Direccion.Colonia && c.Direccion.Colonia.Municipio && c.Direccion.Colonia.Municipio.Estado">
+            <td>{{ c.Direccion.Calle }}</td>
+            <td>{{ c.Direccion.NumeroExterior }}</td>
+            <td>{{ c.Direccion.NumeroInterior }}</td>
+            <td>{{ c.Direccion.Colonia.Nombre }}</td>
+            <td>{{ c.Direccion.Colonia.CodigoPostal }}</td>
+            <td>{{ c.Direccion.Colonia.Municipio.Nombre }}</td>
+            <td>{{ c.Direccion.Colonia.Municipio.Estado.Nombre }}</td>
+          </ng-container>
+
+          <td>
+            <button class="btn btn-sm btn-outline-secondary me-2" (click)="editar(c.IdCliente)">Editar</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="eliminar(c.IdCliente)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
