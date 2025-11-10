@@ -24,8 +24,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let t of tiendas">
-          <td>{{ t.IdTienda }}</td>
-          <td>{{ t.Sucursal }}</td>
+          <td>{{ t.idTienda }}</td>
+          <td>{{ t.sucursal }}</td>
 
           <ng-container *ngIf="t.Direccion && t.Direccion.Colonia && t.Direccion.Colonia.Municipio && t.Direccion.Colonia.Municipio.Estado">
             <td>{{ t.Direccion.Calle }}</td>

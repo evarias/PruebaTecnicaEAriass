@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { LoginComponent } from './login/login.component';
+
 import { GetallComponent as ClienteGetallComponent } from './cliente/getall/getall.component';
 import { FormComponent as ClienteFormComponent } from './cliente/form/form.component';
 
@@ -10,11 +12,15 @@ import { FormComponent as ArticuloFormComponent } from './articulo/form/form.com
 import { GetallComponent as TiendaGetallComponent } from './tienda/getall/getall.component';
 import { FormComponent as TiendaFormComponent } from './tienda/form/form.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes = [
-  { path: '', redirectTo: 'cliente', pathMatch: 'full' },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
 
   {
-    path: 'cliente', children: [
+    path: 'cliente',
+    canActivate: [AuthGuard], 
+    children: [
       { path: '', component: ClienteGetallComponent },
       { path: 'nuevo', component: ClienteFormComponent },
       { path: 'editar/:id', component: ClienteFormComponent },
@@ -22,22 +28,26 @@ const routes: Routes = [
   },
 
   {
-    path: 'articulo', children: [
+    path: 'articulo',
+    canActivate: [AuthGuard],
+    children: [
       { path: '', component: ArticuloGetallComponent },
       { path: 'nuevo', component: ArticuloFormComponent },
-      { path: 'editar/:idArticulo', component: ArticuloFormComponent }
+      { path: 'editar/:id', component: ArticuloFormComponent },
     ]
   },
 
   {
-    path: 'tienda', children: [
+    path: 'tienda',
+    canActivate: [AuthGuard],
+    children: [
       { path: '', component: TiendaGetallComponent },
       { path: 'nuevo', component: TiendaFormComponent },
       { path: 'editar/:id', component: TiendaFormComponent },
     ]
   },
 
-  { path: '**', redirectTo: 'cliente' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

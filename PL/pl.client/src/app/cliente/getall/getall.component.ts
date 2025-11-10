@@ -22,8 +22,8 @@ export class GetallComponent implements OnInit {
     this.error = '';
     this.clienteService.getAll().subscribe({
       next: (res: any) => {
-        if (res && res.Correct && res.Objects) {
-          this.clientes = res.Objects as any[];
+        if (res && res.correct && res.objects) {
+          this.clientes = res.objects as any[];
         } else {
           this.error = 'No se encontraron clientes';
         }

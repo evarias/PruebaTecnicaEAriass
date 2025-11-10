@@ -21,8 +21,8 @@ export class GetallComponent implements OnInit {
     this.error = '';
     this.tiendaService.getAll().subscribe({
       next: (res: any) => {
-        if (res && res.Correct && res.Objects) {
-          this.tiendas = res.Objects as any[];
+        if (res && res.correct && res.objects) {
+          this.tiendas = res.objects as any[];
         } else {
           this.error = 'No se encontraron tiendas';
         }

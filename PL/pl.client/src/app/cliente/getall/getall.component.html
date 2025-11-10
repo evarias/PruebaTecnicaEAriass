@@ -16,31 +16,22 @@
           <th>Apellido materno</th>
           <th>Calle</th>
           <th>No. Ext</th>
-          <th>No. Int</th>
           <th>Colonia</th>
-          <th>CP</th>
-          <th>Municipio</th>
-          <th>Estado</th>
+         
           <th style="width:140px;">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let c of clientes">
-          <td>{{ c.IdCliente }}</td>
-          <td>{{ c.Nombre }}</td>
-          <td>{{ c.ApellidoPaterno }}</td>
-          <td>{{ c.ApellidoMaterno }}</td>
-
+          <td>{{ c.idCliente }}</td>
+          <td>{{ c.nombre }}</td>
+          <td>{{ c.apellidoPaterno }}</td>
+          <td>{{ c.apellidoMaterno }}</td>
           <ng-container *ngIf="c.Direccion && c.Direccion.Colonia && c.Direccion.Colonia.Municipio && c.Direccion.Colonia.Municipio.Estado">
-            <td>{{ c.Direccion.Calle }}</td>
-            <td>{{ c.Direccion.NumeroExterior }}</td>
-            <td>{{ c.Direccion.NumeroInterior }}</td>
-            <td>{{ c.Direccion.Colonia.Nombre }}</td>
-            <td>{{ c.Direccion.Colonia.CodigoPostal }}</td>
-            <td>{{ c.Direccion.Colonia.Municipio.Nombre }}</td>
-            <td>{{ c.Direccion.Colonia.Municipio.Estado.Nombre }}</td>
+            <td>{{ c.Direccion.calle }}</td>
+            <td>{{ c.Direccion.numeroExterior }}</td>
+            <td>{{ c.Direccion.Colonia.nombre }}</td>
           </ng-container>
-
           <td>
             <button class="btn btn-sm btn-outline-secondary me-2" (click)="editar(c.IdCliente)">Editar</button>
             <button class="btn btn-sm btn-outline-danger" (click)="eliminar(c.IdCliente)">Eliminar</button>

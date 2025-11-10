@@ -23,16 +23,16 @@ namespace PL.Server.Controllers
         [HttpPost]
         [Route("GetUser")]
         public IActionResult GetUser(EL.Usuario usuario)
-        { 
+        {
             EL.Result result = _usuario.GetUser(usuario);
             if (result.Correct)
             {
                 var token = GenerateJwtToken((EL.Usuario)result.Object);
-                return Ok(token);
+                return Ok(new { token = token });
             }
             else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, result.ErrorMessage);
+                return Unauthorized(new { token = "", message = "Usuario o contraseña incorrectos" });
             }
         }
 
